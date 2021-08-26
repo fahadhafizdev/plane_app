@@ -12,7 +12,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
-          child: Text('Hello WOrld'),
+          child: Image.asset(
+            'assets/images/logo.png',
+            color: Colors.red,
+            height: 200,
+            width: 200,
+          ),
         ),
       ),
     );
