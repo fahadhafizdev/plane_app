@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:plane_app/ui/pages/splash_page.dart';
+import 'package:plane_app/ui/pages/get_started_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,16 +12,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Plane App',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Image.asset(
-            'assets/images/logo.png',
-            color: Colors.red,
-            height: 200,
-            width: 200,
-          ),
-        ),
-      ),
+      routes: {
+        '/': (context) => SplashPage(),
+        '/get-started': (context) => GetStartedPage(),
+      },
     );
   }
 }
