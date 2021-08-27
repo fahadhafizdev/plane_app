@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+double defaultMargin = 24.0;
+double defaultRadius = 17.0;
+
 Color mainColor = Color(0xff5C40CC);
 Color whiteColor = Color(0xffFFFFFF);
 Color blackColor = Color(0xff1F1449);
@@ -41,9 +44,9 @@ FontWeight semiBold = FontWeight.w600;
 
 final ButtonStyle btnStartedStyle = ElevatedButton.styleFrom(
   primary: mainColor,
-  shape: const RoundedRectangleBorder(
+  shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(17),
+      Radius.circular(defaultRadius),
     ),
   ),
 );

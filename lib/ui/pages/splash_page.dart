@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:plane_app/shared/theme.dart';
-import 'package:plane_app/ui/pages/get_started_page.dart';
 
 class SplashPage extends StatefulWidget {
   @override

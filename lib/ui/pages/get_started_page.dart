@@ -42,7 +42,9 @@ class GetStartedPage extends StatelessWidget {
                   width: 220,
                   child: ElevatedButton(
                     style: btnStartedStyle,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/sign-up');
+                    },
                     child: Text(
                       'Get Started',
                       style: whiteTextStyle.copyWith(
