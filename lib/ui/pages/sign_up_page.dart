@@ -173,7 +173,13 @@ class SignUpPage extends StatelessWidget {
           child: ElevatedButton(
             style: btnStartedStyle,
             onPressed: () {},
-            child: Text('Get Started'),
+            child: Text(
+              'Get Started',
+              style: whiteTextStyle.copyWith(
+                fontWeight: medium,
+                fontSize: 18,
+              ),
+            ),
           ),
         );
       }
