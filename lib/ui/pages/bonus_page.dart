@@ -1,0 +1,146 @@
+import 'package:flutter/material.dart';
+import 'package:plane_app/shared/theme.dart';
+
+class BonusPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Widget boxProfile() {
+      return Container(
+        margin: EdgeInsets.only(top: 165, bottom: 80),
+        padding: EdgeInsets.all(24),
+        height: 211,
+        width: 300,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/image_card.png'),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: mainColor.withOpacity(0.5),
+                blurRadius: 50,
+                offset: Offset(0, 10),
+              ),
+            ]),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //NOTE: NAME
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Name',
+                        style: whiteTextStyle.copyWith(
+                          fontSize: 14,
+                          fontWeight: light,
+                        ),
+                      ),
+                      Text(
+                        'Fahad Hafiz',
+                        style: whiteTextStyle.copyWith(
+                          fontWeight: medium,
+                          fontSize: 20,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+                //NOTE: PAY
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(right: 6),
+                      height: 24,
+                      width: 24,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/logo.png'),
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Pay',
+                      style: whiteTextStyle.copyWith(
+                        fontWeight: medium,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            SizedBox(height: 41),
+            //NOTE: BALLANCE
+            Text(
+              'Ballance',
+              style: whiteTextStyle.copyWith(
+                fontSize: 14,
+                fontWeight: light,
+              ),
+            ),
+            Text(
+              'IDR 280.000.000',
+              style: whiteTextStyle.copyWith(
+                fontSize: 26,
+                fontWeight: medium,
+              ),
+            )
+          ],
+        ),
+      );
+    }
+
+    Widget startFlyButton() {
+      return Container(
+        margin: EdgeInsets.symmetric(vertical: 50, horizontal: 78),
+        width: double.infinity,
+        height: 55,
+        child: ElevatedButton(
+          style: btnStartedStyle,
+          onPressed: () {},
+          child: Text(
+            'Start Fly Now',
+            style: whiteTextStyle.copyWith(
+              fontWeight: medium,
+              fontSize: 18,
+            ),
+          ),
+        ),
+      );
+    }
+
+    return Scaffold(
+      backgroundColor: bgColor,
+      body: Center(
+        child: Column(
+          children: [
+            boxProfile(),
+            Text(
+              'Big Bonus 🎉',
+              style: blackTextStyle.copyWith(
+                fontSize: 32,
+                fontWeight: semiBold,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'We give you early credit so that \nyou can buy a flight ticket',
+              textAlign: TextAlign.center,
+              style: greyTextStyle.copyWith(
+                fontWeight: light,
+                fontSize: 16,
+              ),
+            ),
+            startFlyButton(),
+          ],
+        ),
+      ),
+    );
+  }
+}
