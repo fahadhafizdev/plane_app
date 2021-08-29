@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plane_app/shared/theme.dart';
+import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 
 class SignUpPage extends StatelessWidget {
   @override
@@ -131,7 +132,7 @@ class SignUpPage extends StatelessWidget {
 
       Widget hobbyInput() {
         return Container(
-          margin: EdgeInsets.only(bottom: 20),
+          margin: EdgeInsets.only(bottom: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -166,23 +167,12 @@ class SignUpPage extends StatelessWidget {
       }
 
       Widget btnGetStarted() {
-        return Container(
-          margin: EdgeInsets.only(top: 10, bottom: 30),
-          height: 55,
+        return CustomButtonWidget(
+          textButton: 'Get Started',
           width: double.infinity,
-          child: ElevatedButton(
-            style: btnStartedStyle,
-            onPressed: () {
-              Navigator.pushNamed(context, '/bonus-page');
-            },
-            child: Text(
-              'Get Started',
-              style: whiteTextStyle.copyWith(
-                fontWeight: medium,
-                fontSize: 18,
-              ),
-            ),
-          ),
+          onClickedFunction: () {
+            Navigator.pushNamed(context, '/bonus-page');
+          },
         );
       }
 

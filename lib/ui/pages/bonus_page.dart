@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plane_app/shared/theme.dart';
+import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 
 class BonusPage extends StatelessWidget {
   @override
@@ -97,21 +98,13 @@ class BonusPage extends StatelessWidget {
     }
 
     Widget startFlyButton() {
-      return Container(
-        margin: EdgeInsets.symmetric(vertical: 50, horizontal: 78),
-        width: double.infinity,
-        height: 55,
-        child: ElevatedButton(
-          style: btnStartedStyle,
-          onPressed: () {},
-          child: Text(
-            'Start Fly Now',
-            style: whiteTextStyle.copyWith(
-              fontWeight: medium,
-              fontSize: 18,
-            ),
-          ),
-        ),
+      return CustomButtonWidget(
+        textButton: 'Start Fly Now',
+        width: 220,
+        onClickedFunction: () {
+          Navigator.pushNamed(context, '/main');
+        },
+        margin: EdgeInsets.only(top: 50),
       );
     }
 

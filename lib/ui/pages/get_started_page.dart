@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plane_app/shared/theme.dart';
+import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 
 class GetStartedPage extends StatelessWidget {
   @override
@@ -36,25 +37,17 @@ class GetStartedPage extends StatelessWidget {
                     fontWeight: light,
                   ),
                 ),
-                SizedBox(height: 50),
-                Container(
-                  height: 55,
+                CustomButtonWidget(
+                  textButton: 'Get Started',
                   width: 220,
-                  child: ElevatedButton(
-                    style: btnStartedStyle,
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/sign-up');
-                    },
-                    child: Text(
-                      'Get Started',
-                      style: whiteTextStyle.copyWith(
-                        fontSize: 18,
-                        fontWeight: medium,
-                      ),
-                    ),
+                  onClickedFunction: () {
+                    Navigator.pushNamed(context, '/sign-up');
+                  },
+                  margin: EdgeInsets.only(
+                    top: 50,
+                    bottom: 80,
                   ),
                 ),
-                SizedBox(height: 80),
               ],
             ),
           )
