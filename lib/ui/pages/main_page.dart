@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_navigation_widget.dart';
+import 'package:plane_app/ui/pages/home_page.dart';
 
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Widget buildContent() {
+      return HomePage();
+    }
+
     Widget customButtonNavigation() {
       return Align(
         alignment: Alignment.bottomCenter,
@@ -49,9 +54,7 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Center(
-            child: Text('Hello World'),
-          ),
+          buildContent(),
           customButtonNavigation(),
         ],
       ),
