@@ -51,3 +51,6 @@ final ButtonStyle btnStartedStyle = ElevatedButton.styleFrom(
     ),
   ),
 );
+
+String exampleDesc =
+    'Berada di jalur jalan provinsi yang menghubungkan Denpasar Singaraja serta letaknya yang dekat dengan Kebun Raya Eka Karya menjadikan tempat Bali.';
