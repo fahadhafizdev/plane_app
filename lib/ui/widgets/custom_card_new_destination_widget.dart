@@ -7,31 +7,39 @@ class CustomCardNewDestination extends StatelessWidget {
   final String city;
   final String imageUrl;
   final double rating;
+  final EdgeInsets margin;
+  final EdgeInsets marginRow;
+  final bool isActivedTap;
 
   CustomCardNewDestination({
     required this.name,
     required this.city,
     required this.imageUrl,
     required this.rating,
+    this.margin = const EdgeInsets.only(
+      left: 24,
+      right: 24,
+      top: 16,
+    ),
+    this.marginRow = const EdgeInsets.all(10),
+    this.isActivedTap = true,
   });
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DetailPage(),
-          ),
-        );
+        isActivedTap
+            ? Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailPage(),
+                ),
+              )
+            : print('');
       },
       child: Container(
         height: 90,
-        margin: EdgeInsets.only(
-          left: defaultMargin,
-          right: defaultMargin,
-          top: 16,
-        ),
+        margin: margin,
         decoration: BoxDecoration(
           color: whiteColor,
           borderRadius: BorderRadius.circular(18),
@@ -39,7 +47,7 @@ class CustomCardNewDestination extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              margin: EdgeInsets.all(10),
+              margin: marginRow,
               height: 70,
               width: 70,
               decoration: BoxDecoration(

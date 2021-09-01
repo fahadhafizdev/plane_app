@@ -13,7 +13,10 @@ class GetStartedPage extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/bg_plane.png'),
+                image: AssetImage(
+                  'assets/images/bg_plane.png',
+                ),
+                fit: BoxFit.cover,
               ),
             ),
           ),

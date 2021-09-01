@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_button_widget.dart';
