@@ -17,7 +17,9 @@ class CustomBookingDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 16),
+      margin: (title == 'Grand Total')
+          ? EdgeInsets.only(bottom: 0)
+          : EdgeInsets.only(bottom: 16),
       child: Row(
         children: [
           CustomInterest(text: title),

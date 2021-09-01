@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plane_app/shared/theme.dart';
+import 'package:plane_app/ui/widgets/custom_booking_details.dart';
 import 'package:plane_app/ui/widgets/custom_card_new_destination_widget.dart';
 import 'package:plane_app/ui/widgets/custom_interst.dart';
 
@@ -68,8 +69,7 @@ class CheckOutPage extends StatelessWidget {
     Widget cardBooking() {
       return Container(
         margin: EdgeInsets.symmetric(vertical: 30),
-        height: 427,
-        width: 327,
+        width: double.infinity,
         decoration: BoxDecoration(
           color: whiteColor,
           borderRadius: BorderRadius.circular(18),
@@ -90,117 +90,102 @@ class CheckOutPage extends StatelessWidget {
               rating: 4.8,
               isActivedTap: false,
             ),
+            Container(
+              margin: EdgeInsets.only(bottom: 10),
+              child: Text(
+                'Booking Details',
+                style: blackTextStyle.copyWith(
+                  fontWeight: semiBold,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            //NOTE:TRAVELER
+            CustomBookingDetail(
+              title: 'Traveler',
+              desc: '2 person',
+              textStyle: blackTextStyle.copyWith(
+                fontWeight: semiBold,
+              ),
+            ),
+            //NOTE:SEAT
+            CustomBookingDetail(
+              title: 'SEAT',
+              desc: 'A3\, B3',
+              textStyle: blackTextStyle.copyWith(
+                fontWeight: semiBold,
+              ),
+            ),
+            //NOTE:INSURANCE
+            CustomBookingDetail(
+              title: 'Insurance',
+              desc: 'YES',
+              textStyle: greenTextStyle.copyWith(
+                fontWeight: semiBold,
+              ),
+            ),
+            //NOTE:Refundable
+            CustomBookingDetail(
+              title: 'Refundable',
+              desc: 'NO',
+              textStyle: redTextStyle.copyWith(
+                fontWeight: semiBold,
+              ),
+            ),
+            //NOTE:VAT
+            CustomBookingDetail(
+              title: 'VAT',
+              desc: '45%',
+              textStyle: blackTextStyle.copyWith(
+                fontWeight: semiBold,
+              ),
+            ),
+            //NOTE:PRICE
+            CustomBookingDetail(
+              title: 'Price',
+              desc: 'IDR 8.500.690',
+              textStyle: blackTextStyle.copyWith(
+                fontWeight: semiBold,
+              ),
+            ),
+            //NOTE:Grand Total
+            CustomBookingDetail(
+              title: 'Grand Total',
+              desc: 'IDR 12.000.000',
+              textStyle: purpleTextStyle.copyWith(
+                fontWeight: semiBold,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget paymentDetails() {
+      return Container(
+        margin: EdgeInsets.only(bottom: 30),
+        width: double.infinity,
+        height: 170,
+        decoration: BoxDecoration(
+          color: whiteColor,
+          borderRadius: BorderRadius.circular(18),
+        ),
+        padding: EdgeInsets.symmetric(
+          vertical: 30,
+          horizontal: 20,
+        ),
+        child: Column(
+          children: [
             Text(
-              'Booking Details',
+              'Payment Details',
               style: blackTextStyle.copyWith(
                 fontWeight: semiBold,
                 fontSize: 16,
               ),
             ),
-            //NOTE:TRAVELER
-            Container(
-              margin: EdgeInsets.only(top: 16),
-              child: Row(
-                children: [
-                  CustomInterest(text: 'Traveler'),
-                  Text(
-                    '2 person',
-                    style: blackTextStyle.copyWith(
-                      fontWeight: semiBold,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            //NOTE:SEAT
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              child: Row(
-                children: [
-                  CustomInterest(text: 'SEAT'),
-                  Text(
-                    'A3\, B3',
-                    style: blackTextStyle.copyWith(
-                      fontWeight: semiBold,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            //NOTE:INSURANCE
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              child: Row(
-                children: [
-                  CustomInterest(text: 'Insurance'),
-                  Text(
-                    'YES',
-                    style: greenTextStyle.copyWith(
-                      fontWeight: semiBold,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            //NOTE:Refundable
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              child: Row(
-                children: [
-                  CustomInterest(text: 'Refundable'),
-                  Text(
-                    'NO',
-                    style: redTextStyle.copyWith(
-                      fontWeight: semiBold,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            //NOTE:VAT
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              child: Row(
-                children: [
-                  CustomInterest(text: 'VAT'),
-                  Text(
-                    '45%',
-                    style: blackTextStyle.copyWith(
-                      fontWeight: semiBold,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            //NOTE:PRICE
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              child: Row(
-                children: [
-                  CustomInterest(text: 'Price'),
-                  Text(
-                    'IDR 8.500.690',
-                    style: blackTextStyle.copyWith(
-                      fontWeight: semiBold,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            //NOTE:Grand Total
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              child: Row(
-                children: [
-                  CustomInterest(text: 'Grand Total'),
-                  Text(
-                    'IDR 12.000.000',
-                    style: purpleTextStyle.copyWith(
-                      fontWeight: semiBold,
-                    ),
-                  )
-                ],
-              ),
+            SizedBox(height: 16),
+            Row(
+              children: [],
             )
           ],
         ),
@@ -215,6 +200,7 @@ class CheckOutPage extends StatelessWidget {
             imageCheckout(),
             cityToFly(),
             cardBooking(),
+            paymentDetails(),
           ],
         ),
       ),
