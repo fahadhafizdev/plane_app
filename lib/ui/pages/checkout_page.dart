@@ -3,7 +3,7 @@ import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_booking_details.dart';
 import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 import 'package:plane_app/ui/widgets/custom_card_new_destination_widget.dart';
-import 'package:plane_app/ui/widgets/custom_interst.dart';
+import 'package:plane_app/ui/pages/succes_checkout_page.dart';
 
 class CheckOutPage extends StatelessWidget {
   @override
@@ -188,6 +188,7 @@ class CheckOutPage extends StatelessWidget {
             SizedBox(height: 16),
             Row(
               children: [
+                //NOTE: button pay and plane
                 Container(
                   margin: EdgeInsets.only(right: 16),
                   padding: EdgeInsets.symmetric(
@@ -260,7 +261,14 @@ class CheckOutPage extends StatelessWidget {
       return CustomButtonWidget(
         textButton: 'Pay Now',
         width: double.infinity,
-        onClickedFunction: () {},
+        onClickedFunction: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SuccessCheckoutPage(),
+            ),
+          );
+        },
       );
     }
 
