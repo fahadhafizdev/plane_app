@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_navigation_widget.dart';
 import 'package:plane_app/ui/pages/home_page.dart';
+import 'package:plane_app/ui/pages/transaction_page.dart';
+import 'package:plane_app/ui/pages/setting_page.dart';
+import 'package:plane_app/ui/pages/wallet_page.dart';
 
 class MainPage extends StatelessWidget {
   @override
