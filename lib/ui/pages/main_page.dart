@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_navigation_widget.dart';
 import 'package:plane_app/ui/pages/home_page.dart';
+import 'package:plane_app/cubit/page_cubit.dart';
 import 'package:plane_app/ui/pages/transaction_page.dart';
 import 'package:plane_app/ui/pages/setting_page.dart';
 import 'package:plane_app/ui/pages/wallet_page.dart';
@@ -9,8 +11,19 @@ import 'package:plane_app/ui/pages/wallet_page.dart';
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget buildContent() {
-      return HomePage();
+    Widget buildContent(int currentIndex) {
+      switch (currentIndex) {
+        case 0:
+          return HomePage();
+        case 1:
+          return TransactionPage();
+        case 2:
+          return WalletPage();
+        case 3:
+          return SettingPage();
+        default:
+          return HomePage();
+      }
     }
 
     Widget customButtonNavigation() {
@@ -34,19 +47,19 @@ class MainPage extends StatelessWidget {
             children: [
               CustomNavigationWidget(
                 imgUrl: 'assets/images/icon_home.png',
-                isActive: true,
+                index: 0,
               ),
               CustomNavigationWidget(
                 imgUrl: 'assets/images/icon_book.png',
-                isActive: false,
+                index: 1,
               ),
               CustomNavigationWidget(
                 imgUrl: 'assets/images/icon_wallet.png',
-                isActive: false,
+                index: 2,
               ),
               CustomNavigationWidget(
                 imgUrl: 'assets/images/icon_gear.png',
-                isActive: false,
+                index: 3,
               ),
             ],
           ),
@@ -54,13 +67,17 @@ class MainPage extends StatelessWidget {
       );
     }
 
-    return Scaffold(
-      body: Stack(
-        children: [
-          buildContent(),
-          customButtonNavigation(),
-        ],
-      ),
+    return BlocBuilder<PageCubit, int>(
+      builder: (context, currentIndex) {
+        return Scaffold(
+          body: Stack(
+            children: [
+              buildContent(currentIndex),
+              customButtonNavigation(),
+            ],
+          ),
+        );
+      },
     );
   }
 }
