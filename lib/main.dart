@@ -7,8 +7,12 @@ import 'package:plane_app/ui/pages/sign_up_page.dart';
 import 'package:plane_app/ui/pages/bonus_page.dart';
 import 'package:plane_app/ui/pages/main_page.dart';
 import 'package:plane_app/cubit/page_cubit.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
