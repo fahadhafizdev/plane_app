@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_booking_details.dart';
+import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 import 'package:plane_app/ui/widgets/custom_card_new_destination_widget.dart';
 import 'package:plane_app/ui/widgets/custom_interst.dart';
 
@@ -86,7 +87,7 @@ class CheckOutPage extends StatelessWidget {
               city: 'Tangerang',
               imageUrl: 'assets/images/destination1.png',
               margin: EdgeInsets.only(bottom: 20),
-              marginRow: EdgeInsets.all(0),
+              marginRow: EdgeInsets.only(right: 10),
               rating: 4.8,
               isActivedTap: false,
             ),
@@ -175,6 +176,7 @@ class CheckOutPage extends StatelessWidget {
           horizontal: 20,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Payment Details',
@@ -185,9 +187,94 @@ class CheckOutPage extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Row(
-              children: [],
+              children: [
+                Container(
+                  margin: EdgeInsets.only(right: 16),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 23,
+                  ),
+                  height: 70,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/btn_bg.png'),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: mainColor.withOpacity(0.2),
+                        blurRadius: 30,
+                        offset: Offset(0, 30),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 6),
+                        width: 24,
+                        height: 24,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/logo.png'),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        'Pay',
+                        style: whiteTextStyle.copyWith(
+                          fontWeight: medium,
+                          fontSize: 16,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Column(
+                  children: [
+                    Text(
+                      'IDR 80.400.000',
+                      style: blackTextStyle.copyWith(
+                        fontWeight: medium,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      'Current Balance',
+                      style: greyTextStyle.copyWith(
+                        fontWeight: light,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             )
           ],
+        ),
+      );
+    }
+
+    Widget buttonPayNow() {
+      return CustomButtonWidget(
+        textButton: 'Pay Now',
+        width: double.infinity,
+        onClickedFunction: () {},
+      );
+    }
+
+    Widget linkTermCondition() {
+      return Container(
+        margin: EdgeInsets.symmetric(vertical: 30),
+        child: Text(
+          'Terms and Conditions',
+          textAlign: TextAlign.center,
+          style: greyTextStyle.copyWith(
+            fontWeight: light,
+            fontSize: 16,
+            decoration: TextDecoration.underline,
+          ),
         ),
       );
     }
@@ -201,6 +288,8 @@ class CheckOutPage extends StatelessWidget {
             cityToFly(),
             cardBooking(),
             paymentDetails(),
+            buttonPayNow(),
+            linkTermCondition(),
           ],
         ),
       ),
