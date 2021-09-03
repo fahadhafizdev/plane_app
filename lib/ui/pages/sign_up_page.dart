@@ -4,6 +4,11 @@ import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 import 'package:plane_app/ui/widgets/custom_text_input.dart';
 
 class SignUpPage extends StatelessWidget {
+  TextEditingController nameController = TextEditingController(text: '');
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
+  TextEditingController hobbyController = TextEditingController(text: '');
+
   @override
   Widget build(BuildContext context) {
     Widget title() {
@@ -26,6 +31,7 @@ class SignUpPage extends StatelessWidget {
         return CustomTextInput(
           titleInput: 'Full Name',
           hintText: 'Your Name',
+          controller: nameController,
         );
       }
 
@@ -33,6 +39,7 @@ class SignUpPage extends StatelessWidget {
         return CustomTextInput(
           titleInput: 'Email Address',
           hintText: 'Your Email',
+          controller: emailController,
         );
       }
 
@@ -41,6 +48,7 @@ class SignUpPage extends StatelessWidget {
           titleInput: 'Password',
           hintText: 'Your Password',
           obsucureText: true,
+          controller: passwordController,
         );
       }
 
@@ -48,6 +56,7 @@ class SignUpPage extends StatelessWidget {
         return CustomTextInput(
           titleInput: 'Hobby',
           hintText: 'Your Hobby',
+          controller: hobbyController,
         );
       }
 

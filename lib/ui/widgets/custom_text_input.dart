@@ -5,11 +5,13 @@ class CustomTextInput extends StatelessWidget {
   final String titleInput;
   final String hintText;
   final bool obsucureText;
+  final TextEditingController controller;
 
   CustomTextInput({
     required this.titleInput,
     required this.hintText,
     this.obsucureText = false,
+    required this.controller,
   });
 
   @override
@@ -28,6 +30,7 @@ class CustomTextInput extends StatelessWidget {
           ),
           SizedBox(height: 6),
           TextFormField(
+            controller: controller,
             obscureText: obsucureText,
             cursorColor: blackColor,
             decoration: InputDecoration(
