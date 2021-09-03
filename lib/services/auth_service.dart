@@ -12,6 +12,9 @@ class AuthService {
     String hobby = '',
   }) async {
     try {
+      if (email.isEmpty) {
+        throw "Pastikan semua form terisi";
+      }
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
 
