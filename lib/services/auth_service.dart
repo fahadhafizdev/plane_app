@@ -15,8 +15,11 @@ class AuthService {
       if (email.isEmpty) {
         throw "Pastikan semua form terisi";
       }
-      UserCredential userCredential = await _auth
-          .createUserWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential =
+          await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
       UserModel user = UserModel(
         id: userCredential.user!.uid,
@@ -29,6 +32,19 @@ class AuthService {
       await UserService().setUser(user);
 
       return user;
+    } on FirebaseAuthException catch (errorFirebaseAuth) {
+      if (errorFirebaseAuth.code == 'email-already-in-use') {
+        throw 'Email sudah pernah digunakan';
+      }
+      throw 'error tidak diketahui';
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<void> signOut() async {
+    try {
+      await _auth.signOut();
     } catch (e) {
       throw e;
     }

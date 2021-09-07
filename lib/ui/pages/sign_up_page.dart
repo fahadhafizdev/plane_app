@@ -6,10 +6,11 @@ import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 import 'package:plane_app/ui/widgets/custom_text_input.dart';
 
 class SignUpPage extends StatelessWidget {
-  TextEditingController nameController = TextEditingController(text: '');
-  TextEditingController emailController = TextEditingController(text: '');
-  TextEditingController passwordController = TextEditingController(text: '');
-  TextEditingController hobbyController = TextEditingController(text: '');
+  final TextEditingController emailController = TextEditingController(text: '');
+  final TextEditingController nameController = TextEditingController(text: '');
+  final TextEditingController passwordController =
+      TextEditingController(text: '');
+  final TextEditingController hobbyController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
