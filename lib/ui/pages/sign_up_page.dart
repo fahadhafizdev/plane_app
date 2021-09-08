@@ -126,15 +126,30 @@ class SignUpPage extends StatelessWidget {
     }
 
     Widget tachButton() {
-      return Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.only(bottom: 73, top: 50),
-        child: Text(
-          'Terms and Conditions',
-          style: greyTextStyle.copyWith(
-            fontSize: 16,
-            fontWeight: light,
-            decoration: TextDecoration.underline,
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/sign-in');
+        },
+        child: Container(
+          alignment: Alignment.center,
+          padding: EdgeInsets.only(bottom: 73, top: 30),
+          child: Text.rich(
+            TextSpan(
+                text: 'already have account ?',
+                style: greyTextStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: light,
+                  decoration: TextDecoration.underline,
+                ),
+                children: [
+                  TextSpan(
+                    text: ' login',
+                    style: purpleTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: light,
+                    ),
+                  )
+                ]),
           ),
         ),
       );
