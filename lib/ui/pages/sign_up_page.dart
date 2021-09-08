@@ -128,7 +128,7 @@ class SignUpPage extends StatelessWidget {
     Widget tachButton() {
       return GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, '/sign-in');
+          Navigator.pushReplacementNamed(context, '/sign-in');
         },
         child: Container(
           alignment: Alignment.center,

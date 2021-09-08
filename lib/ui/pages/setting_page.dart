@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plane_app/cubit/page_cubit.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/cubit/auth_cubit.dart';
 import 'package:plane_app/ui/widgets/custom_button_widget.dart';
@@ -18,6 +19,7 @@ class SettingPage extends StatelessWidget {
             ),
           );
         } else if (state is AuthInitial) {
+          context.read<PageCubit>().setPage(0);
           Navigator.pushNamedAndRemoveUntil(
               context, '/sign-up', (route) => false);
         }

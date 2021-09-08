@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plane_app/cubit/auth_cubit.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 import 'package:plane_app/ui/widgets/custom_text_input.dart';
@@ -58,12 +60,37 @@ class SignInPage extends StatelessWidget {
       }
 
       Widget btnGetStarted() {
-        return CustomButtonWidget(
-          textButton: 'Login',
-          width: double.infinity,
-          margin: EdgeInsets.only(top: 10),
-          onClickedFunction: () {},
-        );
+        return BlocConsumer<AuthCubit, AuthState>(listener: (context, state) {
+          if (state is AuthSuccess) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/main', (route) => false);
+          } else if (state is AuthFailed) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor: redColor,
+                content: Text(state.error),
+              ),
+            );
+          }
+        }, builder: (context, state) {
+          if (state is AuthLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          return CustomButtonWidget(
+            textButton: 'Login',
+            width: double.infinity,
+            margin: EdgeInsets.only(top: 10),
+            onClickedFunction: () {
+              context.read<AuthCubit>().signIn(
+                    email: emailController.text,
+                    password: passwordController.text,
+                  );
+            },
+          );
+        });
       }
 
       return Container(
