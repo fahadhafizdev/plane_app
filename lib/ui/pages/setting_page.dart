@@ -19,7 +19,7 @@ class SettingPage extends StatelessWidget {
           );
         } else if (state is AuthInitial) {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/get-started', (route) => false);
+              context, '/sign-up', (route) => false);
         }
       }, builder: (context, state) {
         if (state is AuthLoading) {

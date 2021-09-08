@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plane_app/cubit/auth_cubit.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_card_destination_widget.dart';
 import 'package:plane_app/ui/widgets/custom_card_new_destination_widget.dart';
@@ -7,56 +9,63 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget header() {
-      return Container(
-        margin: EdgeInsets.symmetric(
-          horizontal: defaultMargin,
-          vertical: 30,
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Howdy, \nHafiz',
-                    style: blackTextStyle.copyWith(
-                      fontSize: 24,
-                      fontWeight: semiBold,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(
-                    height: 6,
-                  ),
-                  Text(
-                    'Where to fly today ?',
-                    style: greyTextStyle.copyWith(
-                      fontWeight: light,
-                      fontSize: 16,
-                    ),
-                  )
-                ],
-              ),
+      return BlocBuilder<AuthCubit, AuthState>(builder: (context, state) {
+        print('state :' + state.toString());
+        if (state is AuthSuccess) {
+          return Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: defaultMargin,
+              vertical: 30,
             ),
-            Expanded(
-              flex: 0,
-              child: Container(
-                height: 60,
-                width: 60,
-                margin: EdgeInsets.only(bottom: 20),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/image_profile.png'),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Howdy, \n${state.user.name}',
+                        style: blackTextStyle.copyWith(
+                          fontSize: 24,
+                          fontWeight: semiBold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Text(
+                        'Where to fly today ?',
+                        style: greyTextStyle.copyWith(
+                          fontWeight: light,
+                          fontSize: 16,
+                        ),
+                      )
+                    ],
                   ),
                 ),
-              ),
+                Expanded(
+                  flex: 0,
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    margin: EdgeInsets.only(bottom: 20),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/image_profile.png'),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      );
+          );
+        } else {
+          return SizedBox();
+        }
+      });
     }
 
     Widget popularDestination() {
