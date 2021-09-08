@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plane_app/ui/pages/sign_in_page.dart';
 
 import 'package:plane_app/ui/pages/splash_page.dart';
 import 'package:plane_app/ui/pages/get_started_page.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => SplashPage(),
           '/get-started': (context) => GetStartedPage(),
           '/sign-up': (context) => SignUpPage(),
+          '/sign-in': (context) => SignInPage(),
           '/bonus-page': (context) => BonusPage(),
           '/main': (context) => MainPage(),
         },
