@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plane_app/cubit/destination_cubit.dart';
 import 'package:plane_app/ui/pages/sign_in_page.dart';
 
 import 'package:plane_app/ui/pages/splash_page.dart';
@@ -28,6 +29,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => AuthCubit(),
+        ),
+        BlocProvider(
+          create: (context) => DestinationCubit(),
         ),
       ],
       child: MaterialApp(
