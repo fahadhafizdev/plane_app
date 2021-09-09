@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:plane_app/models/destination_model.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/pages/detail_page.dart';
 
 class CustomCardDestination extends StatelessWidget {
-  final String name;
-  final String city;
-  final String imageUrl;
-  final double rating;
+  final DestinationModel destinations;
 
-  CustomCardDestination({
-    required this.name,
-    required this.city,
-    required this.imageUrl,
-    required this.rating,
-  });
+  CustomCardDestination(this.destinations);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +36,7 @@ class CustomCardDestination extends StatelessWidget {
               margin: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(imageUrl),
+                  image: NetworkImage(destinations.imageUrl),
                 ),
                 borderRadius: BorderRadius.circular(18),
               ),
@@ -72,7 +65,7 @@ class CustomCardDestination extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '$rating',
+                        '${destinations.rating}',
                         style: blackTextStyle.copyWith(
                           fontWeight: medium,
                           fontSize: 14,
@@ -88,7 +81,7 @@ class CustomCardDestination extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 20, top: 10),
               child: Text(
-                name,
+                destinations.name,
                 style: blackTextStyle.copyWith(
                   fontWeight: medium,
                   fontSize: 18,
@@ -99,7 +92,7 @@ class CustomCardDestination extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Text(
-                city,
+                destinations.city,
                 style: greyTextStyle.copyWith(
                   fontWeight: light,
                   fontSize: 14,

@@ -82,15 +82,15 @@ class CheckOutPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomCardNewDestination(
-              name: 'Lake Ciliwung',
-              city: 'Tangerang',
-              imageUrl: 'assets/images/destination1.png',
-              margin: EdgeInsets.only(bottom: 20),
-              marginRow: EdgeInsets.only(right: 10),
-              rating: 4.8,
-              isActivedTap: false,
-            ),
+            // CustomCardNewDestination(
+            //   name: 'Lake Ciliwung',
+            //   city: 'Tangerang',
+            //   imageUrl: 'assets/images/destination1.png',
+            //   margin: EdgeInsets.only(bottom: 20),
+            //   marginRow: EdgeInsets.only(right: 10),
+            //   rating: 4.8,
+            //   isActivedTap: false,
+            // ),
             Container(
               margin: EdgeInsets.only(bottom: 10),
               child: Text(

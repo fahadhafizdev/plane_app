@@ -4,9 +4,17 @@ import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/pages/detail_page.dart';
 
 class CustomCardNewDestination extends StatelessWidget {
-  final DestinationModel destinations;
+  final String name;
+  final String imageUrl;
+  final double rating;
+  final String city;
 
-  CustomCardNewDestination(this.destinations);
+  CustomCardNewDestination({
+    required this.name,
+    required this.imageUrl,
+    required this.rating,
+    required this.city,
+  });
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -19,12 +27,12 @@ class CustomCardNewDestination extends StatelessWidget {
         );
       },
       child: Container(
-        margin: EdgeInsets.only(
+        height: 90,
+        margin: const EdgeInsets.only(
           left: 24,
           right: 24,
-          bottom: 16,
+          top: 16,
         ),
-        height: 90,
         decoration: BoxDecoration(
           color: whiteColor,
           borderRadius: BorderRadius.circular(18),
@@ -32,11 +40,12 @@ class CustomCardNewDestination extends StatelessWidget {
         child: Row(
           children: [
             Container(
+              margin: const EdgeInsets.all(10),
               height: 70,
               width: 70,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(destinations.imageUrl),
+                  image: AssetImage(imageUrl),
                   fit: BoxFit.fill,
                 ),
                 borderRadius: BorderRadius.circular(defaultRadius),
@@ -48,7 +57,7 @@ class CustomCardNewDestination extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  destinations.name,
+                  name,
                   style: blackTextStyle.copyWith(
                     fontWeight: medium,
                     fontSize: 18,
@@ -56,7 +65,7 @@ class CustomCardNewDestination extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  destinations.city,
+                  city,
                   style: greyTextStyle.copyWith(
                     fontWeight: light,
                     fontSize: 14,
@@ -76,7 +85,7 @@ class CustomCardNewDestination extends StatelessWidget {
               ),
             ),
             Text(
-              '${destinations.rating}',
+              '$rating',
               style: blackTextStyle.copyWith(
                 fontWeight: medium,
                 fontSize: 14,
