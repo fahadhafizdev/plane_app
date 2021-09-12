@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:plane_app/models/destination_model.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/pages/choose_seat_page.dart';
 import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 import 'package:plane_app/ui/widgets/custom_interst.dart';
 import 'package:plane_app/ui/widgets/photos_item.dart';
+import 'package:intl/intl.dart';
 
 class DetailPage extends StatelessWidget {
+  final DestinationModel destinations;
+  DetailPage(this.destinations);
+
   @override
   Widget build(BuildContext context) {
     Widget backgroundImage() {
@@ -14,7 +19,7 @@ class DetailPage extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/destination1.png'),
+            image: NetworkImage(destinations.imageUrl),
             fit: BoxFit.cover,
           ),
         ),
@@ -60,14 +65,14 @@ class DetailPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Lake Ciliwung',
+                  destinations.name,
                   style: whiteTextStyle.copyWith(
                     fontSize: 24,
                     fontWeight: semiBold,
                   ),
                 ),
                 Text(
-                  'Tangerang',
+                  destinations.city,
                   style: whiteTextStyle.copyWith(
                     fontSize: 16,
                     fontWeight: light,
@@ -87,7 +92,7 @@ class DetailPage extends StatelessWidget {
               ),
             ),
             Text(
-              '4.8',
+              '${destinations.rating}',
               style: whiteTextStyle.copyWith(
                 fontWeight: medium,
                 fontSize: 14,
@@ -182,8 +187,13 @@ class DetailPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    //NOTE: CURRENCY PRICE WITH INTL
                     Text(
-                      'IDR 2.500.000',
+                      NumberFormat.currency(
+                        locale: 'id',
+                        symbol: 'IDR ',
+                        decimalDigits: 0,
+                      ).format(destinations.price),
                       style: blackTextStyle.copyWith(
                         fontSize: 18,
                         fontWeight: medium,
