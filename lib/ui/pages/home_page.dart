@@ -19,6 +19,13 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  Future<void> _refresh() {
+    return Future.delayed(Duration(seconds: 2), () {
+      print('refresh');
+      context.read<DestinationCubit>().fetchDestinations();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget header() {
@@ -130,14 +137,17 @@ class _HomePageState extends State<HomePage> {
         }
       }, builder: (context, state) {
         if (state is DestinationSuccess) {
-          return ListView(
-            children: [
-              header(),
-              popularDestination(state.destinations),
-              title(),
-              newDestination(state.destinations),
-              SizedBox(height: 140),
-            ],
+          return RefreshIndicator(
+            onRefresh: _refresh,
+            child: ListView(
+              children: [
+                header(),
+                popularDestination(state.destinations),
+                title(),
+                newDestination(state.destinations),
+                SizedBox(height: 140),
+              ],
+            ),
           );
         }
 
