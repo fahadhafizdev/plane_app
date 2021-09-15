@@ -3,10 +3,15 @@ import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_booking_details.dart';
 import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 import 'package:plane_app/ui/widgets/custom_card_checkout_widget.dart';
-import 'package:plane_app/ui/widgets/custom_card_new_destination_widget.dart';
+
 import 'package:plane_app/ui/pages/succes_checkout_page.dart';
+import 'package:plane_app/models/transaction_model.dart';
 
 class CheckOutPage extends StatelessWidget {
+  final TransactionModel transaction;
+
+  CheckOutPage(this.transaction);
+
   @override
   Widget build(BuildContext context) {
     Widget imageCheckout() {

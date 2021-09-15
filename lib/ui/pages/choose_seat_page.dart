@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plane_app/cubit/seat_cubit.dart';
 import 'package:plane_app/models/destination_model.dart';
+import 'package:plane_app/models/transaction_model.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 import 'package:plane_app/ui/widgets/custom_status_seat_widget.dart';
@@ -326,19 +327,32 @@ class ChooseSeatPage extends StatelessWidget {
     }
 
     Widget buttonCheckout() {
-      return CustomButtonWidget(
-        textButton: 'Continue to Checkout',
-        width: double.infinity,
-        margin: EdgeInsets.only(bottom: 46),
-        onClickedFunction: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CheckOutPage(),
-            ),
-          );
-        },
-      );
+      return BlocBuilder<SeatCubit, List<String>>(builder: (context, state) {
+        return CustomButtonWidget(
+          textButton: 'Continue to Checkout',
+          width: double.infinity,
+          margin: EdgeInsets.only(bottom: 46),
+          onClickedFunction: () {
+            int price = destinations.price * state.length;
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CheckOutPage(
+                  TransactionModel(
+                    destination: destinations,
+                    amountOfTraveler: state.length,
+                    selectedSeats: state.join(', '),
+                    insurance: true,
+                    refundable: false,
+                    price: price,
+                    grandTotal: price + (price * 0.45).toInt(),
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      });
     }
 
     return Scaffold(
