@@ -20,3 +20,5 @@ class TransactionFailed extends TransactionState {
   // TODO: implement props
   List<Object> get props => [error];
 }
+
+class TransactionSuccess extends TransactionState {}
