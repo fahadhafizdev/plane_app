@@ -32,7 +32,7 @@ class CustomCardCheckOutDestination extends StatelessWidget {
             width: 70,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(imageUrl),
+                image: NetworkImage(imageUrl),
                 fit: BoxFit.fill,
               ),
               borderRadius: BorderRadius.circular(defaultRadius),
