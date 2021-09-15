@@ -15,6 +15,7 @@ class SeatCubit extends Cubit<List<String>> {
     emit(List.from(state));
   }
 
+  //NOTE: mengecek ketersediaan id seat didalam list
   bool isSelected(String id) {
     int index = state.indexOf(id);
     print('index : $index');

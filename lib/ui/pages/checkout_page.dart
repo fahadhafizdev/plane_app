@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_booking_details.dart';
 import 'package:plane_app/ui/widgets/custom_button_widget.dart';
+import 'package:plane_app/ui/widgets/custom_card_checkout_widget.dart';
 import 'package:plane_app/ui/widgets/custom_card_new_destination_widget.dart';
 import 'package:plane_app/ui/pages/succes_checkout_page.dart';
 
@@ -82,15 +83,12 @@ class CheckOutPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // CustomCardNewDestination(
-            //   name: 'Lake Ciliwung',
-            //   city: 'Tangerang',
-            //   imageUrl: 'assets/images/destination1.png',
-            //   margin: EdgeInsets.only(bottom: 20),
-            //   marginRow: EdgeInsets.only(right: 10),
-            //   rating: 4.8,
-            //   isActivedTap: false,
-            // ),
+            CustomCardCheckOutDestination(
+              name: 'Lake Ciliwung',
+              imageUrl: 'assets/images/destination1.png',
+              rating: 4.8,
+              city: 'Maroco',
+            ),
             Container(
               margin: EdgeInsets.only(bottom: 10),
               child: Text(
