@@ -25,4 +25,8 @@ class SeatCubit extends Cubit<List<String>> {
       return true;
     }
   }
+
+  void resetSeat() {
+    state.removeRange(0, state.length);
+  }
 }

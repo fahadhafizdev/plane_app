@@ -301,6 +301,7 @@ class CheckOutPage extends StatelessWidget {
             ),
           );
         } else if (state is TransactionSuccess) {
+          context.read<SeatCubit>().resetSeat();
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
