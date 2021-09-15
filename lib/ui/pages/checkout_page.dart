@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:plane_app/cubit/auth_cubit.dart';
 import 'package:plane_app/cubit/seat_cubit.dart';
+import 'package:plane_app/cubit/transaction_cubit.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_booking_details.dart';
 import 'package:plane_app/ui/widgets/custom_button_widget.dart';
@@ -291,18 +292,35 @@ class CheckOutPage extends StatelessWidget {
     }
 
     Widget buttonPayNow() {
-      return CustomButtonWidget(
-        textButton: 'Pay Now',
-        width: double.infinity,
-        onClickedFunction: () {
-          Navigator.push(
+      return BlocConsumer<TransactionCubit, TransactionState>(
+          listener: (context, state) {
+        if (state is TransactionFailed) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+            ),
+          );
+        } else if (state is TransactionSuccess) {
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => SuccessCheckoutPage(),
             ),
           );
-        },
-      );
+        }
+      }, builder: (context, state) {
+        if (state is AuthLoading) {
+          return Center(child: CircularProgressIndicator());
+        }
+
+        return CustomButtonWidget(
+          textButton: 'Pay Now',
+          width: double.infinity,
+          onClickedFunction: () {
+            context.read<TransactionCubit>().createTransaction(transaction);
+          },
+        );
+      });
     }
 
     Widget linkTermCondition() {
