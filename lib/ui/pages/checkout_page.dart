@@ -9,7 +9,6 @@ import 'package:plane_app/ui/widgets/custom_booking_details.dart';
 import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 import 'package:plane_app/ui/widgets/custom_card_checkout_widget.dart';
 
-import 'package:plane_app/ui/pages/succes_checkout_page.dart';
 import 'package:plane_app/models/transaction_model.dart';
 
 class CheckOutPage extends StatelessWidget {
@@ -302,12 +301,8 @@ class CheckOutPage extends StatelessWidget {
           );
         } else if (state is TransactionSuccess) {
           context.read<SeatCubit>().resetSeat();
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SuccessCheckoutPage(),
-            ),
-          );
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/success-page', (route) => false);
         }
       }, builder: (context, state) {
         if (state is AuthLoading) {

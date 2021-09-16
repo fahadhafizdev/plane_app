@@ -14,6 +14,7 @@ import 'package:plane_app/cubit/page_cubit.dart';
 import 'package:plane_app/cubit/auth_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:plane_app/ui/pages/succes_checkout_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
           '/sign-in': (context) => SignInPage(),
           '/bonus-page': (context) => BonusPage(),
           '/main': (context) => MainPage(),
+          '/success-page': (context) => SuccessCheckoutPage(),
         },
       ),
     );
