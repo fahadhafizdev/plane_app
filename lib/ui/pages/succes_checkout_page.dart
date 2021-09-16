@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:plane_app/cubit/page_cubit.dart';
 import 'package:plane_app/shared/theme.dart';
 
-import 'package:plane_app/ui/pages/main_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 
 class SuccessCheckoutPage extends StatelessWidget {
@@ -46,12 +47,9 @@ class SuccessCheckoutPage extends StatelessWidget {
                 margin: EdgeInsets.only(top: 50, bottom: 140),
                 width: MediaQuery.of(context).size.width - (77 + 77),
                 onClickedFunction: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MainPage(),
-                    ),
-                  );
+                  context.read<PageCubit>().setPage(1);
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/main', (route) => false);
                 }),
           ],
         ),

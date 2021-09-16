@@ -8,6 +8,7 @@ class TransactionService {
   Future<void> createTransaction(TransactionModel transaction) async {
     try {
       _transactionReference.add({
+        'userId': transaction.userId,
         'destination': transaction.destination.toJson(),
         'amountOfTraveler': transaction.amountOfTraveler,
         'selectedSeats': transaction.selectedSeats,
@@ -17,6 +18,8 @@ class TransactionService {
         'price': transaction.price,
         'grandTotal': transaction.grandTotal,
       });
-    } catch (e) {}
+    } catch (e) {
+      throw e;
+    }
   }
 }

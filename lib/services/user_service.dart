@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:plane_app/models/user_model.dart';
 
 class UserService {
