@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:plane_app/cubit/auth_cubit.dart';
+import 'package:plane_app/cubit/page_cubit.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 
@@ -113,10 +114,10 @@ class WalletPage extends StatelessWidget {
 
     Widget startFlyButton() {
       return CustomButtonWidget(
-        textButton: 'Start Fly Now',
+        textButton: 'Book Now',
         width: 220,
         onClickedFunction: () {
-          Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
+          context.read<PageCubit>().setPage(0);
         },
         margin: EdgeInsets.only(top: 50),
       );
@@ -128,22 +129,6 @@ class WalletPage extends StatelessWidget {
         child: Column(
           children: [
             boxProfile(),
-            Text(
-              'Big Bonus 🎉',
-              style: blackTextStyle.copyWith(
-                fontSize: 32,
-                fontWeight: semiBold,
-              ),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'We give you early credit so that \nyou can buy a flight ticket',
-              textAlign: TextAlign.center,
-              style: greyTextStyle.copyWith(
-                fontWeight: light,
-                fontSize: 16,
-              ),
-            ),
             startFlyButton(),
           ],
         ),
