@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:plane_app/models/transaction_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -25,7 +26,11 @@ class TransactionService {
 
   Future<List<TransactionModel>> fetchTransaction() async {
     try {
-      QuerySnapshot result = await _transactionReference.get();
+      var currentUser = FirebaseAuth.instance.currentUser;
+
+      String uid = currentUser!.uid;
+      QuerySnapshot result =
+          await _transactionReference.where("userId", isEqualTo: uid).get();
 
       List<TransactionModel> transaction = result.docs.map((e) {
         return TransactionModel.fromJson(
