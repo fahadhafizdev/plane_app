@@ -3,6 +3,7 @@ import 'package:plane_app/models/destination_model.dart';
 
 class TransactionModel extends Equatable {
   final DestinationModel destination;
+  final String id;
   final String userId;
   final int amountOfTraveler;
   final String selectedSeats;
@@ -14,6 +15,7 @@ class TransactionModel extends Equatable {
 
   TransactionModel({
     required this.destination,
+    this.id = '',
     required this.userId,
     this.price = 0,
     this.amountOfTraveler = 0,
@@ -24,9 +26,15 @@ class TransactionModel extends Equatable {
     this.vat = 0,
   });
 
+  factory TransactionModel.fromJson(String id, Map<String, dynamic> json) =>
+      TransactionModel(
+          destination: DestinationModel.fromJson(id, json),
+          userId: json['userId']);
+
   @override
   // TODO: implement props
   List<Object?> get props => [
+        id,
         userId,
         destination,
         price,

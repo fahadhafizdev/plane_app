@@ -22,4 +22,18 @@ class TransactionService {
       throw e;
     }
   }
+
+  // Future<List<TransactionModel>> fetchTransaction() async{
+  //   try {
+
+  //     QuerySnapshot result = await _transactionReference.get();
+
+  //     List<TransactionModel> transaction = result.docs.map((e){
+
+  //     }).toList();
+
+  //   } catch (e) {
+  //   }
+
+  // }
 }

@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plane_app/cubit/seat_cubit.dart';
 import 'package:plane_app/models/destination_model.dart';
 import 'package:plane_app/models/transaction_model.dart';
-import 'package:plane_app/services/user_service.dart';
 import 'package:plane_app/shared/theme.dart';
 import 'package:plane_app/ui/widgets/custom_button_widget.dart';
 import 'package:plane_app/ui/widgets/custom_status_seat_widget.dart';
