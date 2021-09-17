@@ -23,17 +23,20 @@ class TransactionService {
     }
   }
 
-  // Future<List<TransactionModel>> fetchTransaction() async{
-  //   try {
+  Future<List<TransactionModel>> fetchTransaction() async {
+    try {
+      QuerySnapshot result = await _transactionReference.get();
 
-  //     QuerySnapshot result = await _transactionReference.get();
+      List<TransactionModel> transaction = result.docs.map((e) {
+        return TransactionModel.fromJson(
+          e.id,
+          e.data() as Map<String, dynamic>,
+        );
+      }).toList();
 
-  //     List<TransactionModel> transaction = result.docs.map((e){
-
-  //     }).toList();
-
-  //   } catch (e) {
-  //   }
-
-  // }
+      return transaction;
+    } catch (e) {
+      throw e;
+    }
+  }
 }
