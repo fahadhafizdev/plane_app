@@ -161,6 +161,19 @@ class _TransactionPageState extends State<TransactionPage> {
           }
           return ListView(
             children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: 30,
+                  horizontal: defaultMargin,
+                ),
+                child: Text(
+                  'History\nTransaction',
+                  style: blackTextStyle.copyWith(
+                    fontWeight: semiBold,
+                    fontSize: 24,
+                  ),
+                ),
+              ),
               Column(
                 children: state.transactions
                     .map(
