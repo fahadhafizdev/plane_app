@@ -153,9 +153,26 @@ class _TransactionPageState extends State<TransactionPage> {
 
           if (state.transactions.length == 0) {
             return Center(
-              child: Text(
-                'Maaf belum ada transaksi',
-                style: greyTextStyle,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 150,
+                    width: 299.96,
+                    margin: EdgeInsets.only(bottom: 20),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          'assets/images/image_success.png',
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    'Maaf belum ada transaksi',
+                    style: greyTextStyle,
+                  ),
+                ],
               ),
             );
           }
