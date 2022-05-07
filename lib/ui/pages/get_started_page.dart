@@ -61,7 +61,13 @@ class _GetStartedPageState extends State<GetStartedPage> {
                   },
                   margin: EdgeInsets.only(
                     top: 50,
-                    bottom: 20,
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                  child: Divider(
+                    color: whiteColor,
                   ),
                 ),
                 Container(
@@ -69,10 +75,11 @@ class _GetStartedPageState extends State<GetStartedPage> {
                   width: double.infinity,
                   margin: EdgeInsets.only(
                     bottom: 40,
-                    right: 20,
-                    left: 20,
+                    right: 84,
+                    left: 84,
                   ),
                   child: ElevatedButton(
+                    style: btnGoogleStyle,
                     onPressed: () async {
                       setState(() {
                         isLoading = true;
@@ -91,9 +98,18 @@ class _GetStartedPageState extends State<GetStartedPage> {
                       //           'hdsifh8y0893i3hkdgbdfgho3u48u390ifodg',
                       //     );
                     },
-                    child: Text(
-                      isLoading ? 'Loading...' : 'Google Signin',
-                      style: TextStyle(fontSize: 18),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image.asset(
+                          'assets/images/icon_google.png',
+                          height: 20,
+                        ),
+                        Text(
+                          isLoading ? 'Loading...' : 'Sign in with Google',
+                          style: TextStyle(fontSize: 17, color: blackColor),
+                        ),
+                      ],
                     ),
                   ),
                 ),

@@ -54,5 +54,14 @@ final ButtonStyle btnStartedStyle = ElevatedButton.styleFrom(
   ),
 );
 
+final ButtonStyle btnGoogleStyle = ElevatedButton.styleFrom(
+  primary: whiteColor,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(
+      Radius.circular(defaultRadius),
+    ),
+  ),
+);
+
 String exampleDesc =
     'Berada di jalur jalan provinsi yang menghubungkan Denpasar Singaraja serta letaknya yang dekat dengan Kebun Raya Eka Karya menjadikan tempat Bali.';
