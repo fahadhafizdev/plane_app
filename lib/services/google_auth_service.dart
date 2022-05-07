@@ -93,6 +93,22 @@ class GoogleAuthService {
               content: 'Error occurred while accessing credentials. Try again.',
             ),
           );
+        } else if (e.code == 'sign_in_canceled') {
+          // Checks for sign_in_canceled exception
+          print(e.toString());
+          ScaffoldMessenger.of(context).showSnackBar(
+            GoogleAuthService.customSnackBar(
+              context: context,
+              content: 'Error Cancelled google sign in',
+            ),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            GoogleAuthService.customSnackBar(
+              context: context,
+              content: 'Error Authentication',
+            ),
+          );
         }
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
