@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:plane_app/models/user_model.dart';
 import 'package:plane_app/services/auth_service.dart';
+import 'package:plane_app/services/google_auth_service.dart';
 import 'package:plane_app/services/user_service.dart';
 
 part 'auth_state.dart';
@@ -41,11 +43,12 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  void signOut() async {
+  void signOut({required BuildContext context}) async {
     try {
       emit(AuthLoading());
 
       await AuthService().signOut();
+      await GoogleAuthService.signOut(context: context);
       emit(AuthInitial());
     } catch (e) {
       emit(AuthFailed(e.toString()));

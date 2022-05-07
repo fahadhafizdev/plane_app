@@ -34,7 +34,7 @@ class SettingPage extends StatelessWidget {
               textButton: 'Sign Out',
               width: 200,
               onClickedFunction: () {
-                context.read<AuthCubit>().signOut();
+                context.read<AuthCubit>().signOut(context: context);
               }),
         );
       }),
