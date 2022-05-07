@@ -52,7 +52,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  void getCurrentUser(String id) async {
+  Future<void> getCurrentUser(String id) async {
     try {
       UserModel user = await UserService().getUserById(id);
       emit(AuthSuccess(user));

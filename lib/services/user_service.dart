@@ -33,4 +33,29 @@ class UserService {
       throw e;
     }
   }
+
+  Future<bool> checkUserById(String id, String name, String email) async {
+    try {
+      DocumentSnapshot snapshot = await _userReference.doc(id).get();
+      // print('ini snapshot ${snapshot['email']}');
+      if (snapshot.exists) {
+        getUserById(id);
+        print('checkUsrByEmail : ada data');
+      } else {
+        UserModel user = UserModel(
+          id: id,
+          name: name,
+          email: email,
+          balance: 1000000,
+          hobby: '',
+        );
+        await setUser(user);
+        print('checkUsrByEmail : tidak ada data');
+      }
+      return true;
+    } catch (e) {
+      print('Error check email by id $e');
+      throw Exception('Error check email by id $e');
+    }
+  }
 }
