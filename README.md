@@ -1,6 +1,6 @@
 # plane_app
 
-A new Flutter project.
+project example for tiket booking plane
 
 ## Getting Started
 
